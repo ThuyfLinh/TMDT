@@ -1,0 +1,50 @@
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Mã sản phẩm</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Loại sản phẩm</th>
+                <th scope="col">Giá sản phẩm</th>
+                <th scope="col">giảm giá</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col" *ngIf="!authService.isSupperAdmin()"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of listProduct; let i = index;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{product?.SKU}}</td>
+                <td>{{product?.Name}}</td>
+                <td>{{product?.Brand}}</td>
+                <td>{{product?.Price}}</td>
+                <td>{{product?.PromotionPrice}}</td>
+                <td>{{product.Status ? 'Còn hàng': 'Hết hàng'}}</td>
+                <td *ngIf="!authService.isSupperAdmin()">
+                    <button type="button" (click)="goToProductDetail(product?.Id)"
+                        class="btn btn-brand btn-sm btn-facebook mr-1" style="margin-bottom: 4px">
+                        <i class="fa fa-edit"></i>
+                        <span>Sửa</span>
+                    </button>
+                    <button type="button" (click)="deleteProduct(product?.Id,i)" class="btn btn-brand btn-sm btn-youtube mr-1" style="margin-bottom: 4px">
+                        <i class="fa fa-trash"></i>
+                        <span>Xóa</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+        <li *ngFor="let page of totalPage;" [className]="page === currentPage ? 'page-item active' : ' page-item'" (click)="getListProduct(page)">
+            <a class="page-link">{{page+1}}</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul> -->
+</div>
+<div class="row">
+    <div class="col-xs-12 col-12">
+        <pagination [totalItems]="totalItem" [rotate]="true" [itemsPerPage]="20" [maxSize]="10" (pageChanged)="getListProduct($event?.page)" [(ngModel)]="currentPage"></pagination>
+    </div>
+</div>

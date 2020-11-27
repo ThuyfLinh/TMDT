@@ -1,0 +1,99 @@
+<header>
+    <div class="d-flex justify-content-center header-top">
+        <div class="p-2 logo" (click)="gotoPage('home')" style="cursor: pointer;">
+            <img src="../../../assets/logo/logo-cut.png">
+        </div>
+        <div class="p-2 search">
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-12">
+                    <div class="ui-inputgroup">
+                        <input style="width: 100%;" type="text" pInputText placeholder="Keyword" (keyup.enter)="search()" [(ngModel)]="searchStr">
+                        <button pButton type="button" icon="fa fa-search" class="ui-button-warn" (click)="search()"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 right-item">
+            <div class="d-flex justify-content-end">
+                <div class="p-1" style="cursor: pointer;" *ngIf="!user" (click)="gotoPage('sigh-up')">
+                    <a class="nav-link">Đăng ký</a>
+                </div>
+                <div class="p-1 " (click)="openModal()" *ngIf="!user">
+                    <a class="nav-link" style="cursor: pointer;">Đăng nhập</a>
+                </div>
+                <div class="p-2 " *ngIf="user">
+                    <a style="cursor: pointer;">xin chào: {{user?.Name}}</a>
+                </div>
+
+                <div class="p-1" (click)="gotoPage('shopping-cart')" *ngIf="cartService.getTotalProduct() > 0">
+                    <a class="nav-link" class="cart-icon" style="cursor: pointer;">
+                        <i class="fa fa-shopping-cart fa-lg"></i>
+                        <span class="badge badge-pill badge-danger">{{cartService.getTotalProduct()| number}}</span>
+                    </a>
+                </div>
+                <div class="p-1 " *ngIf="user" (click)="logout()">
+                    <a class="nav-link" style="cursor: pointer;"><i style="color: red;" class="fa fa-sign-out "></i></a>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end" *ngIf="user"  (click)="gotoPage('sighup-provider')">
+                <div class="p-2 " >
+                    <a style="cursor: pointer;">Đăng ký bán hàng</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-center top-menu">
+        <div class="p-1 menu-icon">
+            <p-megaMenu [model]="items">
+
+            </p-megaMenu>
+        </div>
+    </div>
+</header>
+
+<ng-template #modalLogin>
+    <form action="">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Đăng nhập</h4>
+
+            <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+                <span>&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="card">
+                <div class="card-body">
+                    <form (ngSubmit)="login()" class="form-horizontal" [formGroup]="loginForm">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Email</label>
+                            <div class="col-md-9">
+                                <input type="email" id="hf-email" formControlName="email" name="hf-email"
+                                    class="form-control" placeholder="Nhập địa chỉ email..." autocomplete="email">
+                                <span class="help-block" class="text-danger"
+                                    *ngIf="!loginForm?.controls?.email?.valid && loginForm?.controls?.email?.touched">Email
+                                    là bắt buộc.</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-password">Mật khẩu</label>
+                            <div class="col-md-9">
+                                <input type="password" id="hf-password" formControlName="password" name="hf-password"
+                                    class="form-control" placeholder="Nhập mật khẩu..." autocomplete="current-password">
+                                <span class="help-block" class="text-danger"
+                                    *ngIf="loginForm?.controls?.password?.errors?.required && loginForm?.controls?.password?.touched">Mật
+                                    khẩu là bắt buộc</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</ng-template>
+
+<!-- <p-toast position="top-left"></p-toast> -->

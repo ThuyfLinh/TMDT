@@ -1,0 +1,65 @@
+.top-content{
+    .right-content{
+        width: 78%;
+        min-height: 350px;
+        box-shadow: 0 0 10px -5px #444;
+        img{
+            height: 350px;
+        }
+    }
+    .left-content{
+        box-shadow: 0 0 10px -5px #444;
+        width: 21%;
+        .ui-megamenu{
+            height: 100%;
+        }
+        
+    }
+}
+
+.center-content {
+    width: 100%;
+    .ui-carousel-item{
+        width: 20% !important;
+    }
+}
+
+.list-header{
+    text-align: center;
+}
+.product-image{
+    border-radius: 5%;
+}
+.add-to-cart-btn{
+    height: 25px;
+    width: 40px;
+}
+.product-price{
+    text-decoration: line-through;
+    color: red;
+    font-size: 13px;
+    font-weight: 300;
+    display: block;
+}
+.promotion-price{
+    font-size: 15px;
+    font-weight: 600;
+}
+.car-title {
+    max-height: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.car-subtitle {
+    max-width: 230px;
+}
+.product-percent {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #787878;
+}
+.car-details {
+    margin: 0 5px;
+    cursor: pointer;
+}
+

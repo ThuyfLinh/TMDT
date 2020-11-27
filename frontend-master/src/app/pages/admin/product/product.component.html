@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Thêm sản phẩm</strong>
+            </div>
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"
+                    [formGroup]="productForm">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="sku">Mã sản phẩm</label>
+                        <div class="col-md-9">
+                            <input type="text" id="SKU" formControlName="sku" name="sku" class="form-control">
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="productForm?.controls?.sku?.errors?.required && productForm?.controls?.sku?.touched">
+                            Mã sản phẩm là bắt buộc
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="name">Tên sản phẩm</label>
+                        <div class="col-md-9">
+                            <input type="text" id="name" formControlName="name" name="name" class="form-control"
+                                placeholder="Tên sản phẩm">
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="productForm?.controls?.name?.errors?.required && productForm?.controls?.name?.touched">
+                            Tên sản phẩm là bắt buộc
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label"  for="catalogId">Loại sản phẩm</label>
+                        <div class="col-md-9">
+                            <select id="catalogId" name="catalogId" formControlName="catalogId" class="form-control">
+                                <option *ngFor="let item of listProductCategory" [value]="item?.CatalogId" >{{item?.Brand}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="textarea-input">Nội dung</label>
+                        <div class="col-md-9">
+                            <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="price">Đơn giá</label>
+                        <div class="col-md-5">
+                            <input type="number" id="price" name="price" formControlName="price" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="text-danger"
+                        *ngIf="productForm?.controls?.price?.errors?.required && productForm?.controls?.price?.touched">
+                        Đơn giá là bắt buộc
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="promotionPrice">Giảm giá</label>
+                        <div class="col-md-5">
+                            <input type="number" id="promotionPrice" formControlName="promotionPrice"
+                                name="promotionPrice" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="image">Số lượng</label>
+                        <div class="col-md-5">
+                            <input type="number" id="image" formControlName="amount" name="image"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="topFeature">Tính năng nổi bật</label>
+                        <div class="col-md-9">
+                            <!-- <textarea id="topFeature" name="topFeature" formControlName="topFeature" rows="9"
+                                class="form-control" placeholder="Tính năng nổi bật"></textarea> -->
+                                <p-editor [style]="{'height':'320px'}" formControlName="topFeature"></p-editor>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" *ngIf="!productId">
+                        <label class="col-md-3 col-form-label" for="image">Ảnh chính</label>
+                        <div class="col-md-9">
+                            <input type="file" id="Image" name="image" (change)="onchangeImage($event)">
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="!productId">
+                        <label class="col-md-3 col-form-label" for="imageList">Ảnh Phụ</label>
+                        <div class="col-md-9">
+                            <input type="file" (change)="onchangeImageList($event)" id="ImageList" name="ImageList"  multiple>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-sm btn-primary" (click)="addProduct()" *ngIf="!productId"><i
+                        class="fa fa-dot-circle-o"></i> Thêm</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="productId" (click)="updateProduct()"><i
+                        class="fa fa-dot-circle-o"></i>
+                    Sửa</button>
+                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/.row-->
