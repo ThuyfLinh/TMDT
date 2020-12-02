@@ -23,6 +23,10 @@ rm -rf node_modules
 install npm
 - Go to src > app > pages > product-management > product-management.module.ts : import { PaginationModule } from  'ngx-bootstrap/pagination';
 
-## Run project 
+## Run project front-end
 ng serve -o 
+
+## Run project back-end
+python3 Flask.py
+
 
