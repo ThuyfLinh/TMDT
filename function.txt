@@ -1,0 +1,12 @@
+- Trang chủ: List sản phẩm với số lượng tiêu thụ nhiều nhất (max num_purchase) , chỉ loasd hình ảnh , tên sản phẩm, số lượng bán
+- Nhấn vào sản phẩm: hiện full detail.
+- searching sản phẩm theo tên
+- Lọc (giá - cố định khoảng, category)
+T7
+- Đăng ký tài khoản.
+- Đăng nhập: Khi add cart. Lưu thông in customer_id, store_id vào localstorage.
+
+- Có button nhảy sang shop của user đó. tại đây hiển thị các sản phẩm của store (dựa vào store_id trong product), thêm sửa xóa sản phẩm
+
+- Add sản phẩm vào giỏ hàng, hiện thông tin gồm (hình ảnh, tên, giá, số lượng mua có icon + -). Khi thêm sản phẩm vào giỏ hàng (localstorage)
+- Mua sản phẩm - add order

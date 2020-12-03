@@ -3,6 +3,7 @@ import { ApiService } from '../../../services/api/api.service';
 import { HelperService } from '../../../services/helper/helper.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
+import { PaginationModule } from  'ngx-bootstrap/pagination';
 
 @Component({
     selector: 'app-product-management',
