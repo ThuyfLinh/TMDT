@@ -1,0 +1,1 @@
+mongorestore -d tmdt "/duong/dan/thu/muc/backup/nay"
