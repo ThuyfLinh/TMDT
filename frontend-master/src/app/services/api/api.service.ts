@@ -34,7 +34,8 @@ export class ApiService {
         });
     }
     getALlProduct(page: any) {
-        const url = page !== 0 ? `${this.url}product/list-product?page=${page}` : `${this.url}product/list-product`;
+        // const url = page !== 0 ? `${this.url}product/list-product?page=${page}` : `${this.url}product/list-product`;
+        const url = 'http://127.0.0.1:5000/get'
         return this.http.get(url);
         // return new Promise((resolve, reject) => {
         //     this.http.get(url).subscribe(res => {
